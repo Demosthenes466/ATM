@@ -1,18 +1,13 @@
 
 class User
-	def initialize
+	attr_accessor :name, :pin, :balance
+	def initialize(name, pin, balance)
 		@name = name
 		@pin = pin
+		@balance = balance
 	end
 
-	def input
-		puts " Please Enter Your Name:  "
-		name = gets.chomp
-		puts "Please Enter Your Pin:  "
-		pin = gets.chomp
-	end
-
-
+	
 
 
 end
