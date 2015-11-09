@@ -23,7 +23,7 @@ $ ruby run.rb
         file.each_line do |line|    
             array = line.chop.split(",")    
         end
-    What exactly is the "r"? 
+What exactly is the "r"? 
         
 2) I also am not fully aware of the difference between the    
        attr_accessor vs the attr_reader, such as in my Atm class:
