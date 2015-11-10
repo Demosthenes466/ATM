@@ -9,18 +9,21 @@ file.each_line do |line|
 	array = line.chop.split(",")
 	users.push(User.new(array[0], array[1].to_i, array[2].chop))
 end
-print array
-print users
+
 
 
 atm = Atm.new
 atm.input
-atm.authorize(users, atm.current_name, atm.current_pin)
-if atm.prompt
-	atm.deposit
-else
-	atm.withdraw
+if atm.authorize(users, atm.current_name, atm.current_pin)
+	if atm.prompt
+		atm.deposit
+	else
+		atm.withdraw
+	end
+	atm.update(users)
 end
+
+
 
 
 # user = User.new
