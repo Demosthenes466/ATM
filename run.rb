@@ -13,15 +13,18 @@ end
 
 
 atm = Atm.new
-atm.input
-if atm.authorize(users, atm.current_name, atm.current_pin)
-	if atm.prompt
-		atm.deposit
-	else
-		atm.withdraw
+if atm.account?(users)
+	atm.input
+	if atm.authorize(users, atm.current_name, atm.current_pin)
+		if atm.prompt
+			atm.deposit
+		else
+			atm.withdraw
+		end
+		atm.update(users)
 	end
-	atm.update(users)
 end
+
 
 
 

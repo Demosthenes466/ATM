@@ -14,9 +14,9 @@ class Atm
 
 	def input
 		puts "\n""Please Enter Your Name:  "
-		@current_name = gets.chomp
+		@current_name = gets.chomp.downcase
 		puts "Please Enter Your Pin:  "
-		@current_pin = gets.chomp
+		@current_pin = gets.chomp.downcase
 	end
 
 	def authorize(array, name, pin)
@@ -69,5 +69,30 @@ class Atm
 		end
 		file.close
 	end
+
+	def account?(users)
+		puts "Do you already have an account?"
+		puts "Press 1 to access existing account, Press 2 to create an account"
+		input = gets.chomp.to_i
+		if input == 1
+			return true
+		else 
+			puts "Please enter the name for the account:  "
+			name = gets.chomp.downcase
+			puts "Please enter your pin:  "
+			pin = gets.chomp
+			puts "How much would you like to deposit into your new account?"
+			account_total = gets.chomp.to_f
+
+			users.push(User.new(name, pin, account_total))
+			update(users)
+			puts "You now have an account with us under the name of #{name} with the pin #{pin}"
+			puts "And the account total of $#{account_total}."
+			puts "Please accept the debit card exiting the machine.....now. Have a nice day."
+			return false
+		end
+	end
+
+
 
 end
